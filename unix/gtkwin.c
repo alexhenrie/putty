@@ -988,13 +988,19 @@ static int return_key(GtkFrontend *inst, char *output, bool *special)
 
     /* Ugly label so we can come here as a fallback from
      * numeric keypad Enter handling */
-    if (inst->term->cr_lf_return) {
+    if (inst->term->cr_lf_return == RETURN_CRLF) {
 #ifdef KEY_EVENT_DIAGNOSTICS
-        debug(" - Return in cr_lf_return mode, translating as 0d 0a\n");
+        debug(" - Return in CR_LF mode, translating as 0d 0a\n");
 #endif
         output[1] = '\015';
         output[2] = '\012';
         end = 3;
+    } else if (inst->term->cr_lf_return == RETURN_LF) {
+#ifdef KEY_EVENT_DIAGNOSTICS
+        debug(" - Return in LF mode, translating as 0a\n");
+#endif
+        output[1] = '\012';
+        end = 2;
     } else {
 #ifdef KEY_EVENT_DIAGNOSTICS
         debug(" - Return special case, translating as 0d + special\n");

@@ -1849,6 +1849,11 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       conf_radiobutton_bool_handler,
                       I(CONF_bksp_is_delete),
                       "Control-H", I(0), "Control-? (127)", I(1), NULL);
+    ctrl_radiobuttons(s, "The Return key", 't', 3,
+                      HELPCTX(keyboard_return),
+                      conf_radiobutton_handler,
+                      I(CONF_cr_lf_return),
+                      "CR", I(0), "LF", I(1), "CRLF", I(2), NULL);
     ctrl_radiobuttons(s, "The Home and End keys", 'e', 2,
                       HELPCTX(keyboard_homeend),
                       conf_radiobutton_bool_handler,
