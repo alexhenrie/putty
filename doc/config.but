@@ -560,6 +560,21 @@ Home key and \c{ESC [Ow} for the End key.
 If you find an application on which the Home and End keys aren't
 working, you could try switching this option to see if it helps.
 
+\S{config-return} Changing the action of the \i{Return key}
+
+Servers typically expect the Return key to send the same thing to the
+server as \i{Control-M} (carriage return, ASCII code 13). However,
+numerous serial devices expect Return to send \i{Control-J} (line feed,
+ASCII code 10) instead or both characters together. This setting can be
+used to make the Return key send appropriate characters without having
+to hit \i{Control-J}.
+
+The server or serial device can send \c{ESC [20l} to explicitly request
+\i{Control-M} on Return or \c{ESC [20h} for \i{Control-M Control-J}. If
+the Return key was initially configured to send just \i{Control-J} and
+then one of those escape sequences is set, there is no escape sequence
+to get back to the original \i{Control-J} setting.
+
 \S{config-funkeys} Changing the action of the \i{function keys} and
 \i{keypad}
 
@@ -2169,7 +2184,7 @@ special command}Suspend Process code.
 You probably shouldn't enable this
 unless you know what you're doing.
 
-\S{config-telnetnl} \q{Return key sends \i{Telnet New Line} instead of ^M}
+\S{config-telnetnl} \q{Return key sends \i{Telnet New Line} instead of CR or LF}
 
 Unlike most other remote login protocols, the Telnet protocol has a
 special \q{\i{new line}} code that is not the same as the usual line

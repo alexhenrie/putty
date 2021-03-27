@@ -628,6 +628,7 @@ void save_open_settings(settings_w *sesskey, Conf *conf)
     write_setting_b(sesskey, "PassiveTelnet", conf_get_bool(conf, CONF_passive_telnet));
     write_setting_b(sesskey, "BackspaceIsDelete", conf_get_bool(conf, CONF_bksp_is_delete));
     write_setting_b(sesskey, "RXVTHomeEnd", conf_get_bool(conf, CONF_rxvt_homeend));
+    write_setting_i(sesskey, "CRLFReturn", conf_get_int(conf, CONF_cr_lf_return));
     write_setting_i(sesskey, "LinuxFunctionKeys", conf_get_int(conf, CONF_funky_type));
     write_setting_b(sesskey, "NoApplicationKeys", conf_get_bool(conf, CONF_no_applic_k));
     write_setting_b(sesskey, "NoApplicationCursors", conf_get_bool(conf, CONF_no_applic_c));
@@ -1042,6 +1043,7 @@ void load_open_settings(settings_r *sesskey, Conf *conf)
     gppb(sesskey, "PassiveTelnet", false, conf, CONF_passive_telnet);
     gppb(sesskey, "BackspaceIsDelete", true, conf, CONF_bksp_is_delete);
     gppb(sesskey, "RXVTHomeEnd", false, conf, CONF_rxvt_homeend);
+    gppi(sesskey, "CRLFReturn", 0, conf, CONF_cr_lf_return);
     gppi(sesskey, "LinuxFunctionKeys", 0, conf, CONF_funky_type);
     gppb(sesskey, "NoApplicationKeys", false, conf, CONF_no_applic_k);
     gppb(sesskey, "NoApplicationCursors", false, conf, CONF_no_applic_c);

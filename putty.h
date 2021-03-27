@@ -523,6 +523,13 @@ enum {
 };
 
 enum {
+    /* Return key types (CONF_return_type) */
+    RETURN_CR,
+    RETURN_CRLF,
+    RETURN_LF
+};
+
+enum {
     /* Function key types (CONF_funky_type) */
     FUNKY_TILDE,
     FUNKY_LINUX,
@@ -1455,6 +1462,7 @@ NORETURN void cleanup_exit(int);
     /* Keyboard options */ \
     X(BOOL, NONE, bksp_is_delete) \
     X(BOOL, NONE, rxvt_homeend) \
+    X(INT, NONE, cr_lf_return) \
     X(INT, NONE, funky_type) /* FUNKY_XTERM, FUNKY_LINUX, ... */ \
     X(BOOL, NONE, no_applic_c) /* totally disable app cursor keys */ \
     X(BOOL, NONE, no_applic_k) /* totally disable app keypad */ \

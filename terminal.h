@@ -146,7 +146,8 @@ struct terminal_tag {
     bool in_vbell;
     long vbell_end;
     bool app_cursor_keys, app_keypad_keys, vt52_mode;
-    bool repeat_off, srm_echo, cr_lf_return;
+    bool repeat_off, srm_echo;
+    int cr_lf_return;
     bool seen_disp_event;
     bool big_cursor;
 

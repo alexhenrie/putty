@@ -1378,6 +1378,7 @@ static void power_on(Terminal *term, bool clear)
     term->win_pointer_shape_raw = false;
     term->bracketed_paste = false;
     term->srm_echo = false;
+    term->cr_lf_return = conf_get_int(term->conf, CONF_cr_lf_return);
     {
         int i;
         for (i = 0; i < 256; i++)
@@ -1919,7 +1920,6 @@ Terminal *term_init(Conf *myconf, struct unicode_data *ucsdata, TermWin *win)
     term->printing = term->only_printing = false;
     term->print_job = NULL;
     term->vt52_mode = false;
-    term->cr_lf_return = false;
     term->seen_disp_event = false;
     term->mouse_is_down = 0;
     term->reset_132 = false;

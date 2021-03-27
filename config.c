@@ -1854,6 +1854,12 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       conf_radiobutton_bool_handler,
                       I(CONF_rxvt_homeend),
                       "Standard", I(false), "rxvt", I(true), NULL);
+    ctrl_radiobuttons(s, "The Return key", 'u', 3,
+                      HELPCTX(keyboard_return),
+                      conf_radiobutton_handler,
+                      I(CONF_cr_lf_return),
+                      "Control-M (CR)", I(0), "Control-J (LF)", I(2),
+                      "Both", I(1), NULL);
     ctrl_radiobuttons(s, "The Function keys and keypad", 'f', 3,
                       HELPCTX(keyboard_funkeys),
                       conf_radiobutton_handler,
@@ -3012,7 +3018,7 @@ void setup_config_box(struct controlbox *b, bool midsession,
                       HELPCTX(telnet_specialkeys),
                       conf_checkbox_handler,
                       I(CONF_telnet_keyboard));
-        ctrl_checkbox(s, "Return key sends Telnet New Line instead of ^M",
+        ctrl_checkbox(s, "Return key sends Telnet New Line instead of CR or LF",
                       'm', HELPCTX(telnet_newline),
                       conf_checkbox_handler,
                       I(CONF_telnet_newline));

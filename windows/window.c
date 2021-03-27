@@ -4482,10 +4482,14 @@ static int TranslateKey(UINT message, WPARAM wParam, LPARAM lParam,
                 goto numeric_keypad;
             }
           ordinary_return_key:
-            if (shift_state == 0 && term->cr_lf_return) {
+            if (shift_state == 0 && term->cr_lf_return == RETURN_CR_LF) {
                 *p++ = '\r';
                 *p++ = '\n';
                 return p - output;
+            } else if (shift_state == 0 && term->cr_lf_return == RETURN_LF) {
+                *p++ = 0x0A;
+                *p++ = 0;
+                return -2;
             } else {
                 *p++ = 0x0D;
                 *p++ = 0;
